@@ -25,3 +25,5 @@
 
 # Ignore build artifacts
 /dist
+
+/test-results

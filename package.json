@@ -1,15 +1,15 @@
 {
   "name": "pitchofaces",
   "version": "1.0.0",
-  "type": "module",  
+  "type": "module",
   "description": "![Pitch of Aces Logo](assets/logo.png)",
   "main": "index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "test":  "vitest run",  
-    "e2e":   "playwright test"
+    "test": "vitest run",
+    "e2e": "playwright test"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/jorgeramirezcarrasco/PitchOfAces#readme",
   "devDependencies": {
+    "@playwright/test": "^1.52.0",
     "eslint": "^9.25.1",
     "eslint-plugin-import": "^2.31.0",
     "playwright": "^1.52.0",
@@ -33,7 +34,14 @@
     "yargs": "^17.7.2"
   },
   "vitest": {
-    "include": ["**/*.test.js", "**/*.spec.js"],
-    "exclude": ["node_modules", "dist", "tools"]
+    "include": [
+      "**/*.test.js",
+      "**/*.spec.js"
+    ],
+    "exclude": [
+      "node_modules",
+      "dist",
+      "tools"
+    ]
   }
 }
