@@ -42,7 +42,7 @@ export async function drawCard(card, x, y, isSelected = false) {
   if (!ctx) return;
 
   const fileName = card.isFaceUp
-    ? `${card.leagueCode}_${card.rank}_${card.clubId}.svg`.toUpperCase()
+    ? `${card.leagueCode}_${card.rank}_${card.clubId}.svg`.toLowerCase() // Convert to lowercase
     : 'card_back.svg';
 
   const filePath = card.isFaceUp
