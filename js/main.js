@@ -1,6 +1,6 @@
 // main.js
 // Main application entry point, initialization, and event listeners
-
+// Import DOM-related utilities and other modules
 import { canvas, ctx, restartButton, eraButtons, showEraModal, hideEraModal, setMessage, gameContainer } from './dom.js';
 import { updateLayoutPositions } from './layout.js';
 import { drawGameBoard } from './drawing.js';
@@ -8,7 +8,6 @@ import { dealCards } from './gameLogic.js';
 import * as state from './state.js'; // Import state module
 import { handleInteractionStart } from './interaction.js';
 import { BASE_CANVAS_WIDTH } from './config.js';
-import { buildDeck } from '../tools/cardGenerator.js'; // Import buildDeck
 import { resetScoreAndTimer } from './state.js';
 import { updateScore as updateStateScore } from './state.js';
 
@@ -18,8 +17,6 @@ async function selectEraAndStart(era) {
     state.setSelectedEra(era);
     hideEraModal();
     console.log("Starting game with era:", state.selectedEra);
-
-    const deck = buildDeck(era); // Now properly imported
 
     updateLayoutPositions();
     dealCards();
