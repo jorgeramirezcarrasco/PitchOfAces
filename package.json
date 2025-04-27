@@ -8,8 +8,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "test:unit": "vitest run",
-    "test:e2e": "playwright test"
+    "test":  "vitest run",  
+    "e2e":   "playwright test"
   },
   "repository": {
     "type": "git",
@@ -31,5 +31,9 @@
     "vite": "^6.3.3",
     "vitest": "^3.1.2",
     "yargs": "^17.7.2"
+  },
+  "vitest": {
+    "include": ["**/*.test.js", "**/*.spec.js"],
+    "exclude": ["node_modules", "dist", "tools"]
   }
 }
