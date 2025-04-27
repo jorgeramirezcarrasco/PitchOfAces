@@ -1,5 +1,6 @@
 // eslint.config.js
 import eslintPluginImport from "eslint-plugin-import";
+import eslintPluginVitest from 'eslint-plugin-vitest';
 
 export default [
   {
@@ -9,7 +10,17 @@ export default [
       ecmaVersion: "latest",
       sourceType: "module",
     },
-    plugins: { import: eslintPluginImport },
+    settings: {
+      'import/resolver': {
+        node: {
+          exportConditions: ['import', 'node'],
+        },
+      },
+    },
+    plugins: {
+      import: eslintPluginImport,
+      vitest: eslintPluginVitest, 
+    },
     rules: {
       "no-unused-vars":       ["warn"],
       "import/order":         ["warn"],

@@ -1,4 +1,4 @@
-// vitest.config.js
+/* eslint import/no-unresolved: "off" */
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
