@@ -1,17 +1,16 @@
-import { defineConfig } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
-  testDir: './e2e', // Directory for Playwright tests
-  timeout: 30000, // 30 seconds timeout
-  retries: 2, // Retry failed tests twice
-  use: {
-    baseURL: 'http://localhost:5173', // Update with your local dev server URL
-    headless: true,
-  },
+  testDir: './e2e',
   webServer: {
-    command: 'npm run dev',
-    port: 5173,
-    timeout: 120000, // Wait up to 2 minutes for the server to start
-    reuseExistingServer: !process.env.CI, // Reuse server in local dev
+    command: 'npm run build && npm run preview', // ← build first!
+    port: 4173,
+    reuseExistingServer: !process.env.CI,
   },
+  use: {
+    baseURL: 'http://localhost:4173',
+  },
+  projects: [
+    { name: 'chrome', use: { ...devices['Desktop Chrome'] } },
+  ],
 });
