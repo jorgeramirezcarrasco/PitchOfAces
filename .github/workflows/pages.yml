@@ -50,24 +50,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Create cards era 2010s
+      - name: Generate cards
         run: |
-          npm ci
-          npm run build
-          # Generate cards for the 2010s era
-          node tools/generateCards.js --era 2010s --out ./assets/cards/2010s
-      - name: Create cards era 2000s
-        run: |
-          npm ci
-          npm run build
-          # Generate cards for the 2000s era
-          node tools/generateCards.js --era 2000s --out ./assets/cards/2000s
-      - name: Create cards era modern
-        run: |
-          npm ci
-          npm run build
-          # Generate cards for the modern era
-          node tools/generateCards.js --era modern --out ./assets/cards/modern
+          node tools/generateCards.js --era 2010s --out assets/cards/2010s
+          node tools/generateCards.js --era 2000s --out assets/cards/2000s
+          node tools/generateCards.js --era modern --out assets/cards/modern
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
