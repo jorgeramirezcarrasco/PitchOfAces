@@ -49,11 +49,6 @@ jobs:
       - run: npm ci
       - run: npm run build          # creates ./dist
 
-      - id: upload                  # optional id, helpful for debugging
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: ./dist              # uploads as artifact *github-pages*
-
       - id: deploy
         uses: actions/deploy-pages@v2   # picks artifact from same job
 
