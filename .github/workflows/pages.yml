@@ -1,0 +1,40 @@
+name: CI + Pages Deploy
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+env:
+  NODE_VERSION: 20
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: ${{ env.NODE_VERSION }}, cache: 'npm' }
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run test
+      - name: Playwright
+        run: |
+          npx playwright install --with-deps
+          npm run e2e          # headless mobile + desktop tests
+
+  build:
+    if: github.ref == 'refs/heads/main'
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions: { pages: write, id-token: write }   # required by deploy-pages
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: ${{ env.NODE_VERSION }}, cache: 'npm' }
+      - run: npm ci
+      - run: npm run build          # dist/
+      - uses: actions/upload-pages-artifact@v1   # ⇢ uploads ./dist as artifact
+        with: { path: dist }
+      - id: deploy
+        uses: actions/deploy-pages@v2            # ⇢ publishes to GitHub Pages

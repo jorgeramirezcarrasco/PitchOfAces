@@ -1,0 +1,31 @@
+{
+  "name": "pitchofaces",
+  "version": "1.0.0",
+  "description": "![Pitch of Aces Logo](assets/logo.png)",
+  "main": "index.js",
+  "scripts": {
+    "dev":    "vite",
+    "build":  "vite build",
+    "lint":   "eslint .",
+    "test:unit": "vitest run",
+    "test:e2e":  "playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jorgeramirezcarrasco/PitchOfAces.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jorgeramirezcarrasco/PitchOfAces/issues"
+  },
+  "homepage": "https://github.com/jorgeramirezcarrasco/PitchOfAces#readme",
+  "devDependencies": {
+    "eslint": "^9.25.1",
+    "playwright": "^1.52.0",
+    "prettier": "^3.5.3",
+    "vite": "^6.3.3",
+    "vitest": "^3.1.2"
+  }
+}
