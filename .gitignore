@@ -1,0 +1,27 @@
+# Ignore generated card assets
+/assets/cards/2000s
+/assets/cards/2010s
+/assets/cards/modern
+
+# Ignore Node.js dependencies
+/node_modules
+
+# Ignore macOS system files
+/.DS_Store
+
+# Ignore environment files
+/.env
+
+# Ignore tools dependencies
+/tools/node_modules
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+*.tmp
+*.swp
+*.bak
+
+# Ignore build artifacts
+/dist

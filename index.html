@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pitch of Aces</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Load main.js as a module. defer is implicit with type="module" -->
+    <script src="js/main.js" type="module"></script>
+</head>
+<body>
+    <!-- Updated logo path -->
+    <img src="assets/logo.png" alt="Pitch of Aces Logo" id="game-logo">
+
+    <!-- Modal Structure -->
+    <div id="modal-overlay">
+        <div id="era-modal">
+            <h2>Select Player Era!</h2>
+            <button class="era-button" data-era="2000s">2000s</button>
+            <button class="era-button" data-era="2010s">2010s</button>
+            <button class="era-button" data-era="modern">Modern Era</button>
+        </div>
+    </div>
+
+    <!-- Game Container -->
+    <div id="game-container">
+        <canvas id="solitaire-canvas" width="900" height="500"></canvas>
+        <div id="controls">
+            <div id="score-timer">
+                <span id="score">Score: 0</span>
+                <span id="timer">Time: 90:00</span>
+            </div>
+            <button id="restart-button">Restart Game</button>
+            <div id="message-area"></div>
+        </div>
+    </div>
+</body>
+</html>
