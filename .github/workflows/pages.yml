@@ -29,21 +29,31 @@ jobs:
     if: github.ref == 'refs/heads/main'
     needs: validate
     runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages               # fixed name
+      url:  ${{ steps.deploy.outputs.page_url }}
+
     permissions:
-      pages: write          # ← split onto two lines for readability
+      pages: write
       id-token: write
 
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
-        with:                 # 2 spaces under the dash
+        with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: npm          # quotes not required
+          cache: npm
 
       - run: npm ci
-      - run: npm run build
+      - run: npm run build          # creates ./dist
+
+      - id: upload                  # optional id, helpful for debugging
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./dist              # uploads as artifact *github-pages*
 
       - id: deploy
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v2   # picks artifact from same job
 
