@@ -52,6 +52,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Generate cards
         run: |
+          npm install
           node tools/generateCards.js --era 2010s --out assets/cards/2010s
           node tools/generateCards.js --era 2000s --out assets/cards/2000s
           node tools/generateCards.js --era modern --out assets/cards/modern
