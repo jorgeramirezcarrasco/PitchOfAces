@@ -12,16 +12,18 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: ${{ env.NODE_VERSION }}, cache: 'npm' }
+      - uses: actions/checkout@v4            # ← OK
+      - uses: actions/setup-node@v4          # ← list-item begins
+        with:                                # 2-space indent under “-”
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm                         # strings don't need quotes here
       - run: npm ci
       - run: npm run lint
       - run: npm run test
       - name: Playwright
         run: |
           npx playwright install --with-deps
-          npm run e2e          # headless mobile + desktop tests
+          npm run e2e
 
   build:
     if: github.ref == 'refs/heads/main'
