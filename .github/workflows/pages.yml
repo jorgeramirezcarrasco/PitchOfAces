@@ -26,29 +26,28 @@ jobs:
           npm run e2e
 
   build:
-    if: github.ref == 'refs/heads/main'
-    needs: validate
     runs-on: ubuntu-latest
-
-    environment:
-      name: github-pages               # fixed name
-      url:  ${{ steps.deploy.outputs.page_url }}
-
-    permissions:
-      pages: write
-      id-token: write
-
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: npm
-
+          node-version: 20
       - run: npm ci
-      - run: npm run build          # creates ./dist
 
-      - id: deploy
-        uses: actions/deploy-pages@v2   # picks artifact from same job
 
+  publish-gpr:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://npm.pkg.github.com/
+      - run: npm ci
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
